@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeGenius</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+    <!-- header -->
+    <center>
+    <header>
+        <div class="fas fa-bars" id="menu"></div>
+
+        <a href="index.html" class="logo"><i class="fa-solid fa-user-secret" style="color: white;"></i> MINE GAURD</a>
+
+        <nav class="navbar">
+            <ul>
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="#courses">Protocols</a></li>
+                <li><a id="requestButton">Report</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+
+        <a href="Login.html"><div id="login" class="fas fa-user"></div></a>
+
+    </header>
+    </center>
+
+    <!-- Request -->
+    <div class="popupForm">
+        <div class="popupContent">
+            <span class="closeButton">&times;</span>
+            <h2>Request Your Code.</h2>
+            <form id="requestForm">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="languages">Select a language:</label>
+                <select id="languages" name="languages">
+                    <optgroup label="Programming Languages">
+                        <option value="css">CSS</option>
+                        <option value="HTML">HTML</option>
+                        <option value="python">Python</option>
+                        <option value="javascript">JavaScript</option>
+                        <option value="csharp">C#</option>
+                        <option value="javascript">JavaScript</option>
+                        <option value="php">PHP</option>
+                        <option value="java">JAVA</option>
+                    </optgroup>
+                </select>
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" required></textarea>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Home -->
+    <section class="home">
+        <div class="image">
+            <img src="https://indiaclimatedialogue.net/wp-content/uploads/2020/06/Robb-Kendrick-Alamy.jpg" alt="student studying in laptop">
+        </div>
+        <div class="content">
+            <h3 color="red">Register a new admin here!</h3>
+            <a href="JOIN_US.html" class="button">Register</a>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section id="about">
+        <h2>ABOUT US</h2>
+        <p>We the members of Team Insieme are committed to revolutionizing coal mine management through advanced technology. Our platform is designed to enhance productivity and ensure safety in coal mines by providing real-time monitoring, predictive analytics, and efficient resource management.
+
+            We aim to create a safer working environment by minimizing risks and optimizing operational efficiency. Through data-driven insights, we empower mining companies to make informed decisions, reduce hazards, and boost productivity, ultimately contributing to a more sustainable mining industry.
+            
+            </p>
+        <section class="container">
+            <div class="box-container">
+                <div class="box">
+                   
+                    <div class="box-content">
+                        <h3>SAFE</h3>
+                    </div>
+                </div>
+    
+                <div class="box">
+                    
+                    <div class="box-content">
+                        <h3>EFFICIENT</h3>
+                    </div>
+                </div>
+    
+                <div class="box">
+                    
+                    <div class="box-content">
+                        <h3>REVOLUTIONARY</h3>
+                        
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <!-- Courses -->
+    <section id="courses">
+        <h3>Protocols</h3>
+        <div class="courses-box">
+            <div class="course">
+                <div class="img">
+                    <img src="https://awarens.ca/wp-content/uploads/2021/07/SMS-Logo.png" alt="HTML Image">
+                </div>
+                <div class="content">
+                    <h3>Safety Management </h3>
+
+                </div>
+                <a href="course1.html" class="button">Enroll Now</a>
+            </div>
+    
+            <div class="course">
+                <div class="img">
+                    <img src="https://www.innovapptive.com/hs-fs/hubfs/shift-handover-automation-let-software-do-the-work.webp?width=700&height=400&name=shift-handover-automation-let-software-do-the-work.webp" alt="CSS Image">
+                </div>
+                <div class="content">
+                    <h3>Shift Handover</h3>
+                    
+                </div>
+                <a href="course2.html" class="button">Enroll Now</a>
+            </div>
+    
+            <div class="course">
+                <div class="img">
+                    <img src="https://img.freepik.com/premium-vector/illustration-vector-graphic-cartoon-character-company-activity-report_516790-1820.jpg" alt="JavaScript Image">
+                </div>
+                <div class="content">
+                    <h3>Shift Reports</h3>
+                    
+                </div>
+                <a href="course3.html" class="button">Enroll Now</a>
+            </div>
+    
+            
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer">
+            <h3>Explore</h3>
+            <a href="index.html">Home</a>
+            <a href="#about">About</a>
+            <a href="#courses">Course</a>
+            <a id="requestButton">Request</a>
+            <a href="contact.html">Contact</a>
+        </div>
+        <div class="footer">
+            <h3>Useful Links</h3>
+            <a href="">Help</a>
+            <a href="">Send Request</a>
+            <a href="">Feedback</a>
+            <a href="">Terms and Conditions</a>
+            <a href="">Privacy</a>
+        </div>
+        <div class="footer" >
+            
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="script.js"></script>
+
+</body>
+</html>
