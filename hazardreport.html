@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Submit New Hazard - Safety Management Plan (SMP)</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* General Styling */
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #eaeaea;
+        margin: 0;
+        padding: 0;
+        color: #333;
+    }
+
+    .container {
+        max-width: 700px;
+        margin: 50px auto;
+        padding: 30px;
+        background-color: #fefefe;
+        border-radius: 12px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        border-top: 5px solid #e74c3c;
+    }
+
+    /* Header Styling */
+    header h1 {
+        font-size: 2.2rem;
+        text-align: center;
+        color: #e74c3c;
+        margin-bottom: 30px;
+    }
+
+    /* Form Section */
+    .form-section h2 {
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+        color: #333;
+        text-align: center;
+        border-bottom: 2px solid #e74c3c;
+        padding-bottom: 10px;
+    }
+
+    /* Form Styling */
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    label {
+        font-weight: bold;
+        margin-top: 15px;
+        color: #333;
+    }
+
+    .required:after {
+        content: '*';
+        color: red;
+        margin-left: 5px;
+    }
+
+    input[type="text"],
+    textarea {
+        padding: 12px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        font-size: 1rem;
+        margin-top: 8px;
+    }
+
+    input[type="radio"] {
+        margin-right: 10px;
+    }
+
+    textarea {
+        resize: vertical;
+    }
+
+    /* Button Styling */
+    button {
+        padding: 12px;
+        background-color: #e74c3c;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 1.1rem;
+        cursor: pointer;
+        margin-top: 20px;
+        transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+        background-color: #c0392b;
+    }
+
+    /* Footer Styling */
+    footer {
+        margin-top: 40px;
+        text-align: center;
+        font-size: 0.9rem;
+        color: #777;
+    }
+
+    footer p {
+        margin: 0;
+    }
+    .logo {
+    width: 100px;
+    height: 100px;
+    border-radius:50px;
+}
+  </style>
+</head>
+<body>
+  <a href="index.php" class="logo-link">
+    <div class="header-container">
+        <img src="Mainlogo.jpg" alt="Mine Guard Logo" class="logo">
+      </a>
+  <div class="container">
+    <header>
+      <h1>Submit New Hazard</h1>
+    </header>
+
+    <section class="form-section">
+      <h2>HAZARD REPORT FORM</h2>
+      <form id="hazard-form" action="submit-form.php" method="post">
+        <label for="hazard-location" class="required">Location Address:</label>
+        <input type="text" id="hazard-location" name="hazard-location" required>
+
+        <p>Who is at risk?</p>
+        <div>
+          <input type="radio" id="hazard-risk1" name="hazard-risk" value="Worker" required>
+          <label for="hazard-risk1">Worker</label>
+        </div>
+        <div>
+          <input type="radio" id="hazard-risk2" name="hazard-risk" value="Supervisor" required>
+          <label for="hazard-risk2">Supervisor</label>
+        </div>
+        <br>
+
+        <label for="hazard-reported" class="required">Hazard Reported by:</label>
+        <input type="text" id="hazard-reported" name="hazard-reported" required>
+
+        <label for="hazard-name">Name of Witness: (if applicable):</label>
+        <input type="text" id="hazard-name" name="hazard-name">
+
+        <label for="hazard-description" class="required">Description:</label>
+        <textarea id="hazard-description" name="hazard-description" rows="4" required></textarea>
+
+        <label for="additonal-info">Additional Information (if any):</label>
+        <textarea id="additonal-info" name="additonal-info" rows="4"></textarea>
+
+        <button type="submit">Submit Hazard</button>
+    </form>
+    </section>
+
+    <footer>
+      <p>&copy; 2024 Safety Management Plan. All Rights Reserved.</p>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('hazard-form').addEventListener('submit', function(event) {
+      // Prevent form from submitting normally
+      event.preventDefault();
+
+      // Retrieve form data
+      var location = document.getElementById('hazard-location').value;
+      var reportedBy = document.getElementById('hazard-reported').value;
+      var description = document.getElementById('hazard-description').value;
+      var risk = document.querySelector('input[name="hazard-risk"]:checked').value;
+      var nameOfWitness = document.getElementById('hazard-name').value;
+      var additionalInfo = document.getElementById('additonal-info').value;
+
+      // Create an object to store the form data with timestamp
+      var hazardData = {
+        timestamp: new Date().toLocaleString(),
+        location: location,
+        risk: risk,
+        reportedBy: reportedBy,
+        nameOfWitness: nameOfWitness,
+        description: description,
+        additionalInfo: additionalInfo
+      };
+
+      // Retrieve existing data from localStorage
+      var history = JSON.parse(localStorage.getItem('hazardHistory')) || [];
+
+      // Add new data to history
+      history.push(hazardData);
+
+      // Save updated history to localStorage
+      localStorage.setItem('hazardHistory', JSON.stringify(history));
+
+      // Redirect to index.html
+      window.location.href = 'index.php';
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Login.css">
+    <title>Registration Form</title>
+</head>
+<body>
+    <div class="main">
+        <h1>Registration Form</h1>
+        <form id="registrationForm" action="verified.php" method="POST" onsubmit="return validateForm()">
+            <label for="fname">First Name:</label>
+            <input type="text" id="fname" name="fname" required><br><br>
+
+            <label for="lname">Last Name:</label>
+            <input type="text" id="lname" name="lname" required><br><br>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br><br>
+
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required><br><br>
+
+            <label for="psswrd">Password:</label>
+            <input type="password" id="psswrd" name="psswrd" required><br><br>
+
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" name="dob" required><br><br>
+
+            <label for="designation">Designation:</label>
+            <select id="designation" name="designation" required>
+                <option value="admin">Administrator</option>
+                <option value="super">Superintendent</option>
+            </select><br><br>
+56+
+            <label for="area">Area:</label>
+            <select id="area" name="area" required>
+                <option value="CT001">Choritand Tiliaya - CT001</option>
+                <option value="JKJ002">Jogeshwar & Khas Jogeshwar - JKJ002</option>
+                <option value="RH003">Rohne - RH003</option>
+                <option value="ROC004">Rabodih OCP - ROC004</option>
+                <option value="UN005">Urtan North - UN005</option>
+                <option value="NAS006">North of Arkhapal Srirampur - NAS006</option>
+            </select><br><br>
+
+            <button type="submit">Register</button>
+        </form>
+    </div>
+    <script src="Login.js"></script>
+</body>
+</html>

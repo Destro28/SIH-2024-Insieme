@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Safety Management Plan (SMP)</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        /* General Styling */
+        /* General Styling */
+body {
+    font-family: 'Roboto', sans-serif;
+    color: #333;
+    line-height: 1.6;
+    background: url('https://img.freepik.com/free-vector/white-abstract-background_23-2148810113.jpg?w=360') no-repeat center center fixed;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header Styling */
+header {
+    background: linear-gradient(to right, #1f1f1f, #333);
+    color: white;
+    padding: 15px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+header .logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: white;
+}
+
+header .navbar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+header .navbar ul li {
+    margin: 0 20px;
+}
+
+header .navbar ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.1rem;
+    padding: 5px;
+}
+
+header .navbar ul li a:hover,
+.navbar ul li a.active {
+    color: #f39c12;
+    border-bottom: 2px solid #f39c12;
+}
+
+#login {
+    font-size: 1.6rem;
+    color: white;
+}
+
+/* Container and Section Styling */
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+}
+
+h1,
+h2,
+h3 {
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: #333;
+    text-align: center;
+}
+
+h2 {
+    font-size: 2rem;
+    color: #f39c12;
+}
+
+h3 {
+    font-size: 1.6rem;
+    color: #333;
+}
+
+/* Flexbox Container for Images */
+.image-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+/* Image Box Styling */
+.image-box {
+    background-color: #f8f8f8;
+    border-radius: 8px;
+    padding: 10px;
+    width: calc(30% - 20px); /* Adjusted to fit three boxes in a line */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+    .image-box {
+        width: calc(45% - 20px); /* Adjust width for smaller screens */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .image-box {
+        width: 100%; /* Full width for mobile screens */
+    }
+}
+
+.image-box img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.image-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+}
+
+.image-box h5 {
+    font-size: 0.9rem;
+    margin: 5px 0;
+}
+
+/* Button Styling */
+button {
+    padding: 10px 20px;
+    background: linear-gradient(to right, #f39c12, #d9830b);
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Video Section */
+.video-section {
+    text-align: center;
+    margin: 30px 0;
+}
+
+.video-section .video-thumbnail {
+    width: 80%; /* Adjust the width to make it slightly bigger */
+    max-width: 800px; /* Adjust the max-width for larger screens */
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .image-box {
+        width: calc(50% - 20px); /* Adjust width for smaller screens */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .image-box {
+        width: 100%; /* Full width for mobile screens */
+    }
+}
+/* Report Section Styling */
+.report-section {
+    text-align: center;
+    margin: 30px 0;
+}
+
+.report-section h2 {
+    font-size: 2rem;
+    color: #f39c12;
+    margin-bottom: 10px;
+}
+
+.report-section p {
+    font-size: 1.1rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+.container2{
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+    background-color: rgb(243, 229, 229);
+    border-radius: 8px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+
+}
+
+/* Style for the report button */
+.report-button {
+    display: inline-block;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    color: #fff;
+    background-color: #e74c3c;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    text-align: center;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.report-button:hover {
+    background-color: #c0392b;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.report-button:active {
+    background-color: #e74c3c;
+}
+
+
+/* Footer Styling */
+footer {
+    background: url('footer-background.jpg') no-repeat center center;
+    background-size: cover;
+    color: white;
+    padding: 40px 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+footer h3 {
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+    margin-bottom: 10px;
+    display: block;
+}
+
+footer a:hover {
+    color: #f39c12;
+}
+/* Container for Check Environment button */
+.check-env-container {
+    max-width: 1200px;
+    margin: 30px auto; /* Center the container with auto margin */
+    text-align: center; /* Center align the button */
+    padding: 20px;
+    background-color: #d5ebc5; /* Optional background color */
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Optional shadow for the container */
+}
+
+/* Style for the check environment button */
+.check-env-btn {
+    background-color: #823625;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.check-env-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+.container4{
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+    background-color: rgb(243, 229, 229);
+    border-radius: 8px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+
+}
+/* Container for Charts */
+.charts-section {
+    margin: 30px 0;
+}
+
+.chart-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.bar-chart-container,
+.pie-chart-container {
+    flex: 1; /* Allow both charts to take equal width */
+}
+
+.bar-chart-container {
+    max-width: 500px; /* Adjust as needed */
+}
+
+.pie-chart-container {
+    max-width: 350px; /* Adjust as needed */
+}
+
+@media screen and (max-width: 768px) {
+    .chart-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .bar-chart-container,
+    .pie-chart-container {
+        max-width: 100%; /* Full width on smaller screens */
+    }
+}
+.logo {
+    width: 100px;
+    height: 100px;
+    border-radius:50px;
+}
+
+
+        
+    </style>
+</head>
+
+<body>
+    <a href="index.php" class="logo-link">
+        <div class="header-container">
+            <img src="Mainlogo.jpg" alt="Mine Guard Logo" class="logo"></a>
+    <!-- Header -->
+    <header>
+        <div class="fas fa-bars" id="menu"></div>
+        <a href="index.php" class="logo"><i class="fa-solid fa-user-secret" style="color: white;"></i>MINE GUARD</a>
+        <nav class="navbar">
+            <ul>
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="shift_details.html">Shift Protocols</a></li>
+                <li><a href="/">Report Generation</a></li>
+            </ul>
+        </nav>
+        <a href="Login.html"><div id="login" class="fas fa-user"></div></a>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <h1>Safety Management Plan (SMP)</h1>
+
+        <section class="intro-section">
+            <h2>Major Hazards to take care of:</h2>
+            <div class="image-container">
+                <!-- Image Box 1 -->
+                <div class="image-box">
+                    <img src="dnd-1.jpg" alt="Hazard 1">
+                    <h5>"खनन करते समय और मशीनों का उपयोग करते समय, मलबा उड़कर खनिक की आँख में चला गया।"</h5>
+                </div>
+                <!-- Image Box 2 -->
+                <div class="image-box">
+                    <img src="dnd-2.jpg" alt="Hazard 2">
+                    <h5>"खनन करते समय हमेशा आंखों की सुरक्षा के लिए चश्मा पहनें, नहीं तो आपकी आंखें अल्ट्रावायलेट केराटाइटिस या आंखों की सनबर्न के संपर्क में आ सकती हैं।"</h5>
+                </div>
+                <!-- Image Box 3 -->
+                <div class="image-box">
+                    <img src="dnd-3.jpg" alt="Hazard 3">
+                    <h5>"एक खुदाई करने वाले की बाल्टी ने उस हॉल ट्रक चालक को टक्कर मारी और कुचल दिया, जो वाहन लोड हो रहा था और वह अपने ट्रक से बाहर निकल गया था। सभी लोग इस बारे में सतर्क रहें।"</h5>
+                </div>
+            </div>
+        </section>
+        
+        <div class="container2">
+        <section class="report-section">
+            <h2>Click here to report on government website</h2>
+            <p>If you encounter any hazards, please follow the government guidelines by clicking the button below.</p>
+            <a href="https://dhanbad.nic.in/" target="_blank" class="report-button">Report on Government Website</a>
+        </section>
+    </div>
+        <div class="container3">
+
+        <section class="video-section">
+            <h2>Watch Our Safety Awareness Video</h2>
+            
+            <!-- Custom thumbnail for the video -->
+            <a href="https://www.youtube.com/watch?v=rmInvUd1yMM" target="_blank">
+                <img src="thumbnail.jpg" alt="Safety Awareness Video Thumbnail" class="video-thumbnail">
+            </a>
+        </section>
+    </div>
+    
+<div class="check-env-container">
+    <h2>Take our test to check your working environment.NOW!</h2>
+    <a href="check_env.html">
+        <button class="check-env-btn">Check here!</button>
+    </a>
+</div>
+<div class="container3">
+    <!-- Section for Charts -->
+    <section class="charts-section">
+        <div class="chart-container">
+            <!-- Bar Chart -->
+            <div class="bar-chart-container">
+                <h2>Casualty Statistics in Coal Mining</h2>
+                <canvas id="casualtyChart" width="400" height="200"></canvas>
+            </div>
+            
+            <!-- Pie Chart -->
+            <div class="pie-chart-container">
+                <h2>Reasons for Death in Coal Mining</h2>
+                <canvas id="reasonChart" style="width: 300px; height: 300px;"></canvas> <!-- Adjusted size -->
+            </div>
+        </div>
+    </section>
+</div>
+
+
+
+
+</div>
+
+
+
+        
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div>
+            <h3>Contact Us</h3>
+            <a href="#">Email: info@mineguard.com</a>
+            <a href="#">Phone: +123 456 7890</a>
+        </div>
+        <div>
+            <h3>Quick Links</h3>
+            <a href="#">Home</a>
+            <a href="#">Shift Protocols</a>
+            <a href="#">Report Generation</a>
+        </div>
+    </footer>
+
+</body>
+
+</html>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const ctxCasualty = document.getElementById('casualtyChart').getContext('2d');
+        const casualtyChart = new Chart(ctxCasualty, {
+            type: 'bar',
+            data: {
+                labels: ['Accidents', 'Explosions', 'Falling Rock', 'Dust Inhalation', 'Machinery Failures'],
+                datasets: [
+                    {
+                        label: 'Number of Incidents',
+                        data: [120, 45, 85, 110, 75], // Example data for incidents
+                        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        borderWidth: 1
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top'
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                let label = context.dataset.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                if (context.parsed.y !== null) {
+                                    label += context.parsed.y;
+                                }
+                                return label;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Type of Incident'
+                        }
+                    },
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Number of Incidents'
+                        }
+                    }
+                }
+            }
+        });
+
+        // Pie Chart for Reasons of Death
+        const ctxReason = document.getElementById('reasonChart').getContext('2d');
+        const reasonChart = new Chart(ctxReason, {
+            type: 'pie',
+            data: {
+                labels: ['Accidents', 'Explosions', 'Falling Rock', 'Dust Inhalation', 'Machinery Failures'],
+                datasets: [{
+                    label: 'Reasons for Death',
+                    data: [20, 15, 20, 30, 10], // Example percentages for each reason
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.6)',
+                        'rgba(54, 162, 235, 0.6)',
+                        'rgba(255, 206, 86, 0.6)',
+                        'rgba(75, 192, 192, 0.6)',
+                        'rgba(153, 102, 255, 0.6)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top'
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                let label = context.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                if (context.raw !== null) {
+                                    label += context.raw + '%';
+                                }
+                                return label;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    });
+</script>
+    

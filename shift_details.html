@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="shift_details.css">
+    <title>Shift Log</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-image: url(https://img.freepik.com/premium-vector/hand-painted-watercolor-sky-clouds-abstract-watercolor-background-blue-fluid-painting_101553-1703.jpg);
+            color: #333;
+            margin: 0;
+            padding: 0;
+            background-color: #ebeced;
+  
+        }
+  
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-top: 20px;
+            font-size: 2rem;
+        }
+  
+        form {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+        }
+  
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+  
+        input[type="text"],
+        input[type="date"],
+        input[type="number"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+  
+        select {
+            cursor: pointer;
+        }
+  
+        button.collapsible {
+            background-color: #0f2c4a;
+            color: white;
+            cursor: pointer;
+            padding: 15px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            border-radius: 4px;
+        }
+  
+        button.collapsible.active,
+        button.collapsible:hover {
+            background-color: #203449;
+        }
+  
+        div.content {
+            padding: 20px;
+            display: none;
+            overflow: hidden;
+            background-color: #f9f9f9;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+  
+        h4 {
+            font-size: 1rem;
+            color: #7f8c8d;
+            margin-bottom: 10px;
+        }
+  
+        input[type="checkbox"] {
+            margin-right: 10px;
+        }
+  
+        .hazard-label {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+  
+        /* Styling for severity levels */
+        .moderate {
+            color: #f39c12;
+        }
+  
+        .high {
+            color: #e74c3c;
+        }
+  
+        .extremely-high {
+            color: #c0392b;
+            font-weight: bold;
+        }
+  
+        /* Submit button styling */
+        .Submit input[type="submit"] {
+            width: 100%;
+            background-color: #27ae60;
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 4px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+  
+        .Submit input[type="submit"]:hover {
+            background-color: #2ecc71;
+        }
+  
+        /* Progress bar styling */
+        .progress-bar {
+            width: 100%;
+            background-color: #e0e0e0;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            height: 10px;
+        }
+  
+        .progress {
+            width: 50%;
+            height: 100%;
+            background-color: #27ae60;
+            border-radius: 8px;
+            transition: width 0.4s ease;
+        }
+  
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            form {
+                padding: 20px;
+            }
+  
+            button.collapsible {
+                font-size: 1rem;
+                padding: 12px;
+            }
+  
+            .Submit input[type="submit"] {
+                padding: 12px;
+                font-size: 1rem;
+            }
+        }
+        .header {
+          background: linear-gradient(to right, #1f1f1f, #333);
+          color: white;
+          font-size: 2rem; /* Adjusted for better readability */
+          font-weight: bolder;
+          padding: 20px 30px; /* Adjusted padding */
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          position: sticky;
+          top: 0;
+          z-index: 1000;
+          text-align: center;
+      }
+      
+      .header img {
+          max-height: 160px; /* Adjust the height of the logo */
+          width: auto;
+          margin-left: 20px; /* Add space between the text and the image */
+          border-radius: 50%;
+      }
+
+.logo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+}
+
+.header-title {
+    color: white;
+    font-size: 2em;
+    margin: 0;
+}
+       
+    </style>
+</head>
+
+<body>
+        <a href="index.php" class="logo-link">
+            <div class="header-container">
+                <img src="Mainlogo.jpg" alt="Mine Guard Logo" class="logo">
+        </a>
+    <div class="progress-bar">
+        <div class="progress" id="progress"></div>
+    </div>
+
+    <form action="handover_logs2.php" method="post" id="myForm">
+      <!-- Shift type shiftdate -->
+      <button class="collapsible">Shift Details</button>
+      <div class="content">
+          <label for="ShiftDate">Date: </label><br>
+          <input type="date" id="shiftdate" name="shiftdate" required><br><br><br>
+          <label for="ShiftType">Shift Type: </label> <br>
+          <select id="shiftType" name="shiftType">
+              <option value="day">Morning</option>
+              <option value="evening">Evening</option>      
+          </select><br><br>
+
+          <!-- Supervisor ID and Worker Badge No. -->
+          <label for="supervisorId">Supervisor ID: </label>
+          <input type="number" id="supervisorId" name="supervisorId">
+          
+
+          <h4>Workers Allotted for Supervisor Badge No.1: Worker Badge No. 1 to 40</h4>
+          <h4>Workers Allotted for Supervisor Badge No.2: Worker Badge No. 41 to 80</h4>
+          <h4>Workers Allotted for Supervisor Badge No.3: Worker Badge No. 81 to 120</h4>
+          
+              <!-- Options will be populated based on Supervisor ID -->
+          </select><br><br>
+      </div>
+
+        <!-- Hazard Report-->
+        <button class="collapsible">Hazard Reports</button>
+        <div class="content">
+            
+
+            <h3>Possible Hazards (Select all that apply):</h3>
+
+            <label class="hazard-label extremely-high">
+                <input type="checkbox" name="hazards[]" value="Roof collapse - High"> Roof collapse - High
+            </label>
+            <label class="hazard-label extremely-high">
+                <input type="checkbox" name="hazards[]" value="Methane gas explosions - Extremely High"> Methane gas explosions - Extremely High
+            </label>
+            <label class="hazard-label high">
+                <input type="checkbox" name="hazards[]" value="Coal dust inhalation (Pneumoconiosis) - High"> Coal dust inhalation (Pneumoconiosis) - High
+            </label>
+            <label class="hazard-label extremely-high">
+                <input type="checkbox" name="hazards[]" value="Fire hazards - Extremely High"> Fire hazards - Extremely High
+            </label>
+            <label class="hazard-label high">
+                <input type="checkbox" name="hazards[]" value="Equipment-related accidents - High"> Equipment-related accidents - High
+            </label>
+            <label class="hazard-label high">
+                <input type="checkbox" name="hazards[]" value="Flooding - High"> Flooding - High
+            </label>
+            <label class="hazard-label extremely-high">
+                <input type="checkbox" name="hazards[]" value="Toxic gas exposure (e.g., carbon monoxide) - Extremely High"> Toxic gas exposure (e.g., carbon monoxide) - Extremely High
+            </label>
+            <label class="hazard-label high">
+                <input type="checkbox" name="hazards[]" value="Electrocution - High"> Electrocution - High
+            </label>
+            <label class="hazard-label moderate">
+                <input type="checkbox" name="hazards[]" value="Slips, trips, and falls - Moderate"> Slips, trips, and falls - Moderate
+            </label>
+            <label class="hazard-label high">
+                <input type="checkbox" name="hazards[]" value="Heavy machinery collisions - High"> Heavy machinery collisions - High
+            </label>
+            <label class="hazard-label moderate">
+                <input type="checkbox" name="hazards[]" value="Vibration-induced injuries (e.g., hand-arm vibration syndrome) - Moderate"> Vibration-induced injuries (e.g., hand-arm vibration syndrome) - Moderate
+            </label>
+            <label class="hazard-label moderate">
+                <input type="checkbox" name="hazards[]" value="Exposure to extreme temperatures - Moderate"> Exposure to extreme temperatures - Moderate
+            </label>
+            <label class="hazard-label high">
+                <input type="checkbox" name="hazards[]" value="Water inrushes - High"> Water inrushes - High
+            </label>
+
+            <label class="hazard-label">
+                <input type="checkbox" name="hazards[]" value="None"> None
+            </label>
+            <label class="hazard-label">
+                <input type="checkbox" name="hazards[]" value="Other"> Other:
+                <input type="text" name="otherHazard" placeholder="Describe other hazard">
+            </label>
+        </div>
+
+        <!-- Production Details -->
+        <button class="collapsible">Production Details</button>
+        <div class="content">
+            <label for="coalextract">Amount of Coal Extracted (in tons):</label><br>
+            <input type="number" id="coalextract" name="coalextract"><br><br>
+            <label for="EquipUptime">Equipment Up Time (set amount of equipment is assumed): </label><br>
+            <input type="number" id="EquipUptime" name="EquipUptime"><br><br>
+            <label for="OpEff">Operational Efficiency: </label><br>
+            <input type="number" id="OpEff" name="OpEff" step="0.01">
+        </div>
+
+        <!-- Equipment Status -->
+        <button class="collapsible">Equipment Status</button>
+        <div class="content">
+            
+            <!-- Machines and recommended hours -->
+            <h3>Machines Used</h3>
+            <label>
+                <input type="checkbox" name="machines[]" value="Large Mining Trucks"> Large Mining Trucks (Recommended: 8 hours)
+            </label><br>
+            <label>
+                <input type="checkbox" name="overworked[]" value="Large Mining Trucks"> Overworked
+            </label><br><br>
+
+            <label>
+                <input type="checkbox" name="machines[]" value="Hydraulic Excavators"> Hydraulic Excavators (Recommended: 7 hours)
+            </label><br>
+            <label>
+                <input type="checkbox" name="overworked[]" value="Hydraulic Excavators"> Overworked
+            </label><br><br>
+
+            <label>
+                <input type="checkbox" name="machines[]" value="Large Dozers"> Large Dozers (Recommended: 6 hours)
+            </label><br>
+            <label>
+                <input type="checkbox" name="overworked[]" value="Large Dozers"> Overworked
+            </label><br><br>
+
+            <label>
+                <input type="checkbox" name="machines[]" value="Electric Rope Shovels"> Electric Rope Shovels (Recommended: 9 hours)
+            </label><br>
+            <label>
+                <input type="checkbox" name="overworked[]" value="Electric Rope Shovels"> Overworked
+            </label><br><br>
+
+            <label>
+                <input type="checkbox" name="machines[]" value="Rotary Drill Rigs and Rock Drills"> Rotary Drill Rigs and Rock Drills (Recommended: 5 hours)
+            </label><br>
+            <label>
+                <input type="checkbox" name="overworked[]" value="Rotary Drill Rigs and Rock Drills"> Overworked
+            </label><br><br>
+
+            <label>
+                <input type="checkbox" name="machines[]" value="Motor Graders"> Motor Graders (Recommended: 4 hours)
+            </label><br>
+            <label>
+                <input type="checkbox" name="overworked[]" value="Motor Graders"> Overworked
+            </label><br><br>
+
+            <label>
+                <input type="checkbox" name="machines[]" id="" value="Large Wheel Loaders"> Large Wheel Loaders (Recommended: 3 hours)
+            </label><br>
+            <label>
+                <input type="checkbox" name="overworked[]" value="Large Wheel Loaders"> Overworked
+            </label><br><br>
+
+            <!-- Other machine types -->
+            <label>
+                <input type="checkbox" name="machines[]" value="Other"> Other:
+                <input type="text" name="otherMachine" placeholder="Specify other machine">
+            </label>
+        </div>
+
+        <!-- Pending Tasks -->
+        <button class="collapsible">Pending Tasks(if any)</button>
+        <div class="content">
+            <label for="pendingTasks">Pending Tasks:</label><br>
+            <textarea id="pendingTasks" name="pendingTasks" rows="4" cols="50" required></textarea><br><br>
+        </div>
+
+        <!-- Submit Form -->
+        <div class="Submit">
+            <input type="submit" value="Submit">
+        </div>
+    </form>
+    <script src="shift_details.js">
+      </script>
+        <script>
+          // Function to dynamically update Worker Badge No. based on Supervisor ID selection
+          const supervisorIdSelect = document.getElementById('supervisorId');
+          const workerBadgeNoSelect = document.getElementById('workerBadgeNo');
+      
+          supervisorIdSelect.addEventListener('change', function() {
+              const supervisorId = this.value;
+              let badgeOptions = '';
+      
+              
+              // Update the Worker Badge No. select options
+              workerBadgeNoSelect.innerHTML = badgeOptions;
+          });
+      
+          // Trigger change event to initialize options on page load
+          window.onload = function() {
+              supervisorIdSelect.dispatchEvent(new Event('change'))
+          };
+        </script>
+      </script>
+    </script>
+</body>
+
+</html>
